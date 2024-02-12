@@ -1,10 +1,11 @@
 package filemanager
 
 import (
-	"os"
 	"bufio"
-	"errors"
 	"encoding/json"
+	"errors"
+	"os"
+	"time"
 )
 
 type FileManager struct {
@@ -42,6 +43,8 @@ func (fm FileManager) WriteResult(data interface{}) error{
 	if err != nil {
 		return errors.New("failed to create file.")
 	}
+
+	time.Sleep(3 * time.Second)
 
 	// json.NewEncoder(file).Encode(data) // short version
 	encoder := json.NewEncoder(file)
